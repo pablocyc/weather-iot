@@ -4,11 +4,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Weather-iot</title>
   <link rel="stylesheet" href="./index.css">
   <script type="module" src="./index.js"></script>
 </head>
 <body>
-
+  <header class="header">
+    <div class="toggle-theme" id="toggle-theme">
+      <img src="./assets/moon.svg" alt="" class="toggle-theme__icon" id="toggle-icon">
+      <p class="toggle-theme__text" id="toggle-text">Dark Mode</p>
+    </div>
+  </header>
+  <main class="main">
+    <h1 class="title">Weather Station</h1>
+    <sensor-card></sensor-card>
+  </main>
 </body>
 </html>
