@@ -6,7 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather-iot</title>
   <link rel="stylesheet" href="./index.css">
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
+    import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCTVRTgXZTk5WjAMGRtxvFog0R0nElrSUk",
+      authDomain: "weather-station-8e973.firebaseapp.com",
+      databaseURL: "https://weather-station-8e973-default-rtdb.firebaseio.com",
+      projectId: "weather-station-8e973",
+      storageBucket: "weather-station-8e973.appspot.com",
+      messagingSenderId: "270171452446",
+      appId: "1:270171452446:web:1f42aab361155f98336a0f",
+      measurementId: "G-3SLBPRH8D3"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `station-home/`)).then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  </script>
   <script type="module" src="./index.js"></script>
+  <script type="module" src="./modules/sensors.js"></script>
 </head>
 <body>
   <header class="header">
@@ -17,7 +52,10 @@
   </header>
   <main class="main">
     <h1 class="title">Weather Station</h1>
-    <sensor-card></sensor-card>
+    <div class="container">
+      <sensor-card sensor="temperature" class="item"></sensor-card>
+      <sensor-card sensor="humidity" class="item"></sensor-card>
+    </div>
   </main>
 </body>
 </html>

@@ -1,5 +1,13 @@
 @font-face {
   font-family: "Roboto";
+  font-weight: 300;
+  src:
+    url("fonts/Roboto-300-normal.woff2") format("woff2"),
+    url("fonts/Roboto-300-normal.woff") format("woff"),
+    url("fonts/Roboto-300-normal.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto";
   font-weight: 400;
   src:
     url("fonts/Roboto-400-normal.woff2") format("woff2"),
@@ -38,7 +46,7 @@
   --bg-card-color: hsl(0, 0%, 98%);
   --border-radius: 0.4em;
   --transition: color 0.1s, background-color 0.2s ease-in-out;
-  --skills-bar-length: 0%;
+  --box-shadow: rgba(176, 190, 197, 0.42);
 }
 
 * {
@@ -51,7 +59,8 @@ img {
 }
 
 body {
-  margin: 0;
+  width: 80%;
+  margin: 0 auto;
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: var(--transition);
@@ -60,16 +69,28 @@ body {
 
 body.dark {
   --text-color: hsl(0, 0%, 93%);
+  --box-shadow: rgb(37, 37, 37);
   --bg-color: #090A0B;
   --bg-card-color: #414148;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.item {
+  margin: 2rem;
+  margin-bottom: 0px;
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  height: 75px;
-  padding: 0 2em;
+  padding: 1em 0;
   transition: var(--transition);
 }
 
@@ -90,5 +111,6 @@ body.dark {
   font-weight: 700;
   font-size: 32px;
   line-height: 39px;
+  margin: 0;
   transition: var(--transition);
 }
